@@ -2,11 +2,16 @@ package com.skillbox.module4.oop
 
 import java.util.*
 
-class Ammo (
+enum class Ammo (
     val damage: Int,
     val criticalDamageCance: Int,
     val criticalDamageRatio: Int
 ){
+    TYPE_A (50, 30, 50),
+    TYPE_B (70, 40, 60),
+    TYPE_C (90, 10, 90)
+
+
     var currentDamage: Int = 0
 
     val random = Random().nextInt(100) + 1
@@ -16,11 +21,9 @@ class Ammo (
         else 0
     }
 
-    fun CurrentDamage() {
+    fun CurrentDamage(): Int {
         currentDamage = damage + criticalDamage() * criticalDamageRatio/10
-        println( " damage: ${ currentDamage }")
-
-
+        return currentDamage
     }
 
     }

@@ -9,7 +9,7 @@ enum class Ammo (
 ){
     TYPE_A (50, 30, 50),
     TYPE_B (70, 40, 60),
-    TYPE_C (90, 10, 90)
+    TYPE_C (90, 10, 90);
 
 
     var currentDamage: Int = 0

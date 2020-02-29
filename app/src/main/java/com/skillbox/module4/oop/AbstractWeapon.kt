@@ -5,23 +5,21 @@ import com.skillbox.module4.oop.Ammo.*
 
 abstract class AbstractWeapon(
     var maxNuberBulletInStore: Int,
-    val FireType: FireType,
-    var Ammo: List<Ammo>,
-    val ammoAveliable: Boolean
-) {
+    val FireType: FireType
+
+){
     abstract fun createAmmo(): Ammo
 
-    object Weapons {
-
-        val someWeapon = object : AbstractWeapon(30, FireType.Single, List<Ammo>,   ){
-            override fun createAmmo(): Ammo {
-                return TYPE_A}
+    var Ammo = mutableListOf<Ammo>()
 
 
-
-    fun reload ( Ammo: List<Ammo>){
-        var listOfAmmo = mutableListOf(maxNuberBulletInStore, this.Ammo)
+    fun ammoAveliable(): Boolean {
+        return Ammo.isNotEmpty()
     }
 
+
+    fun reload() {
+        Ammo.add(maxNuberBulletInStore, createAmmo())
+    }
     fun bulletsForShot():
 }

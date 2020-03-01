@@ -18,5 +18,11 @@ fun main() {
             override fun createAmmo(): Ammo {
                 return com.skillbox.module4.oop.Ammo.TYPE_C
             }
-    }
+        }
+
+         val sniperRifle = object : AbstractWeapon(10, FireType.Single) {
+        override fun createAmmo(): Ammo {
+            return com.skillbox.module4.oop.Ammo.TYPE_A
+            }
+        }
     }

@@ -19,7 +19,9 @@ abstract class AbstractWeapon(
 
 
     fun reload() {
-        Ammo.add(maxNuberBulletInStore, createAmmo())
+        Ammo.add(maxNuberBulletInStore, com.skillbox.module4.oop.Ammo)
     }
-    fun bulletsForShot():
+    fun bulletsForShot() {
+        Ammo.minus(Array(FireType.spendedBullets, com.skillbox.module4.oop.Ammo))
+    }
 }

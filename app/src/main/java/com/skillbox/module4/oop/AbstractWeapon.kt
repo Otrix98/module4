@@ -14,14 +14,22 @@ abstract class AbstractWeapon(
 
 
     fun ammoAveliable(): Boolean {
-        return Ammo.isNotEmpty()
+        if (Ammo.isEmpty()) return (true)
+        else return (false)
+    }
+
+    fun reload(ammo: Ammo) {
+        Ammo.add(maxNuberBulletInStore, ammo)
     }
 
 
-    fun reload() {
-        Ammo.add(maxNuberBulletInStore, com.skillbox.module4.oop.Ammo)
+
+    fun getAmmo() : Int {
+        for (i in 1 .. FireType.spendedBullets){
+            Ammo.removeAt(Ammo.size-1)
+        }
+        return FireType.spendedBullets
     }
-    fun bulletsForShot() {
-        Ammo.minus(Array(FireType.spendedBullets, com.skillbox.module4.oop.Ammo))
-    }
+
+
 }

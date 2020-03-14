@@ -12,7 +12,7 @@ enum class Ammo (
     TYPE_C (90, 10, 90);
 
 
-    var currentDamage: Int = 0
+    var currentDamage: Int =  0
 
     val random = Random().nextInt(100) + 1
 
@@ -20,8 +20,7 @@ enum class Ammo (
          return if (criticalDamageCance >= random) criticalDamageRatio
         else 0
     }
-
-    fun CurrentDamage(): Int {
+    fun CurrentDamage () : Int{
         currentDamage = damage + criticalDamage() * criticalDamageRatio/10
         return currentDamage
     }

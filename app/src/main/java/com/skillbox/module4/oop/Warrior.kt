@@ -5,5 +5,5 @@ interface Warrior {
     val dodgeChance: Int
 
     fun attack(enemy: Warrior)
-    fun getDamage (damage: Int)
+    fun takeDamage (damage: Int)
 }

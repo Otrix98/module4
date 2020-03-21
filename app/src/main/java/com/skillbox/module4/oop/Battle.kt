@@ -1,8 +1,26 @@
 package com.skillbox.module4.oop
 
-import com.skillbox.module4.oop.Ammo as Ammo
+class Battle (
+    val firstTeam: Team,
+    val secondTeam: Team,
+    val battleIsOver: Boolean
+) {
+    fun takeBattleState(): BattleState {
+        if (firstTeam.warriorList.isNotEmpty() && secondTeam.warriorList.isNotEmpty())
+            return BattleState.progress()
+        if (firstTeam.warriorList.isEmpty())
+            return BattleState.secondTeamWin()
+        if (secondTeam.warriorList.isEmpty())
+            return BattleState.firstTeamWin()
+        else return BattleState.drawn()
+    }
 
+    fun battleProgress(): {
+        var newFirstTeam = firstTeam.warriorList.shuffled()
+        var newSecondTeam = secondTeam.warriorList.shuffled()
 
-fun main () {
-
+        for (i in newFirstTeam) {
+            if (
+        }
+    }
 }

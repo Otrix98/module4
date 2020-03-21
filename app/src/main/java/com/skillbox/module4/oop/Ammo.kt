@@ -20,12 +20,15 @@ enum class Ammo (
          return if (criticalDamageCance >= random) criticalDamageRatio
         else 0
     }
-    fun CurrentDamage () : Int{
+    fun calcDamage () : Int {
         currentDamage = damage + criticalDamage() * criticalDamageRatio/10
         return currentDamage
     }
 
+
     }
+
+
 
 
 

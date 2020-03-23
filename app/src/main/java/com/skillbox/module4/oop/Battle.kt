@@ -15,12 +15,29 @@ class Battle (
         else return BattleState.drawn()
     }
 
-    fun battleProgress(): {
-        var newFirstTeam = firstTeam.warriorList.shuffled()
-        var newSecondTeam = secondTeam.warriorList.shuffled()
 
-        for (i in newFirstTeam) {
-            if (
+    private fun firefight() : Boolean {
+
+        val shotingWarrior1 = firstTeam.warriorList.firstOrNull { it.isReady }
+        val shotingWarrior2 = secondTeam.warriorList.firstOrNull { it.isReady }
+        val attackedWarrior1 = firstTeam.warriorList.firstOrNull { !it.isKilled }
+        val attackedWarrior2 = secondTeam.warriorList.firstOrNull { !it.isKilled }
+
+        if (attackedWarrior1 == null || attackedWarrior2 == null
+            || (shotingWarrior1 == null && shotingWarrior2 == null)) return false
+        else shotingWarrior1?.attack(attackedWarrior2)
+        shotingWarrior2?.attack(attackedWarrior1)
+        return true
         }
+
+    fun battle() {
+        while (firefight() == true) {
+            firefight()
+        }
+
+
     }
+
+
+
 }

@@ -5,7 +5,8 @@ import com.skillbox.module4.oop.Ammo.*
 
 abstract class AbstractWeapon(
     var maxNuberBulletInStore: Int,
-    val FireType: FireType
+    val FireType: FireType,
+    val ammoType: Ammo
 
 ){
     abstract fun createAmmo(): Ammo
@@ -18,8 +19,8 @@ abstract class AbstractWeapon(
         else return (false)
     }
 
-    fun reload(ammo: Ammo) {
-        Ammo.add(maxNuberBulletInStore, ammo)
+    fun reload() {
+        Ammo.add(maxNuberBulletInStore, ammoType)
     }
 
 

@@ -2,9 +2,9 @@ package com.skillbox.module4.oop
 
 class Team (val numberOfWarriors: Int = 0) {
 
-    var warriorList = mutableListOf<Warrior>()
+    var warriorList = mutableListOf<AbstractWarrior>()
 
-    private fun recruting(): {
+    private fun recruting() {
         for (i in 1..numberOfWarriors)
             if (Math.random() < 50) {
                 warriorList.add(Soldier())
@@ -17,7 +17,6 @@ class Team (val numberOfWarriors: Int = 0) {
         } else {
             warriorList.add(Sniper())
         }
-        return warriorList
 
     }
 }

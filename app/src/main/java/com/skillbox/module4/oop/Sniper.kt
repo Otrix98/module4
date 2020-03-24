@@ -13,7 +13,7 @@ class Sniper:  AbstractWarrior ( 700,
         }
     }
 
-    override val isKilled: Boolean
+    override var isKilled: Boolean = false
         get() {return currentHealth <= 0}
 
 

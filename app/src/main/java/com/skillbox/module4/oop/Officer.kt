@@ -13,7 +13,7 @@ class Officer: AbstractWarrior ( 1000,
             }
         }
 
-        override val isKilled: Boolean
+        override var isKilled: Boolean = false
             get() {return currentHealth <= 0}
 
 

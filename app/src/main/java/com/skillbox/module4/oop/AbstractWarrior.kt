@@ -6,7 +6,7 @@ import com.skillbox.module4.oop.Weapons.pistol
 import kotlin.random.Random
 
 abstract class AbstractWarrior (
-    var health: Int = 1000,
+    private var health: Int = 1000,
     override  var dodgeChance: Int = 50,
     val accuracy: Int = 50,
     val gun: AbstractWeapon = pistol,
@@ -20,16 +20,15 @@ abstract class AbstractWarrior (
     }
 
 
-
     override fun attack(enemy: Warrior) {
 
-        if (gun.ammoAveliable()){
+        if (gun.ammoAveliable()) {
             gun.reload()
         }
         val shots = gun.getAmmo()
         var damage = 0
-        for (i in 1 .. shots){
-            if (Math.random() < (accuracy/100f) * (1 - enemy.dodgeChance/100f)){
+        for (i in 1..shots) {
+            if (Math.random() < (accuracy / 100f) * (1 - enemy.dodgeChance / 100f)) {
                 damage += gun.createAmmo().calcDamage()
             }
         }
@@ -40,22 +39,19 @@ abstract class AbstractWarrior (
     }
 
 
-
     override var isKilled: Boolean
         get() = health <= 0
         set(value) {}
 
     override val isReady: Boolean
-    get()= !isKilled && !isAttack
+        get() = !isKilled && !isAttack
 
-    //fun isReady(): Boolean {
-      //   if (isKilled || isAttack ) return false
-      //  return isReady()
-    }
+}
 
 
 
-        }
+
+
 
 
 

@@ -13,7 +13,7 @@ class Jeggernaut:  AbstractWarrior ( 1500,
         }
     }
 
-    override val isKilled: Boolean
+    override var isKilled: Boolean = false
         get() {return currentHealth <= 0}
 
 

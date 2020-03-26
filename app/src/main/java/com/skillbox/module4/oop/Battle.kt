@@ -5,6 +5,7 @@ class Battle (
     val secondTeam: Team,
     var battleIsOver: Boolean = false
 ) {
+
     fun takeBattleState(): BattleState {
         if (firstTeam.warriorList.isNotEmpty() && secondTeam.warriorList.isNotEmpty())
             return BattleState.progress(firstTeamHealth = firstTeam.warriorList.sumBy {it.currentHealth},
@@ -13,11 +14,11 @@ class Battle (
             return BattleState.secondTeamWin()
         if (secondTeam.warriorList.isEmpty())
             return BattleState.firstTeamWin()
-        else return BattleState.drawn()
+         else return BattleState.drawn()
     }
 
 
-    private fun firefight() : Boolean {
+    private fun firefight() : Boolean  {
 
         val shotingWarrior1 = firstTeam.warriorList.firstOrNull { it.isReady }
         val shotingWarrior2 = secondTeam.warriorList.firstOrNull { it.isReady }
@@ -33,9 +34,8 @@ class Battle (
         }
 
     fun battle() {
-        takeBattleState()
-        while (firefight() == true) {
-            firefight()
+        do {takeBattleState().state(takeBattleState())}
+        while (firefight() == true)
         }
 
 
@@ -43,4 +43,3 @@ class Battle (
 
 
 
-}

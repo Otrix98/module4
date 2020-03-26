@@ -1,10 +1,12 @@
 package com.skillbox.module4.oop
 
-class Main {
-    fun main() {
-        println("Введите количество воинов в команде:")
-        val numberOfWarriors: Int = readLine()!!.toInt()
-        Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors)).battle()
+fun main() {
+    println("Введите количество воинов в команде:")
+    val numberOfWarriors: Int = readLine()!!.toInt()
+    println("Начало битвы")
+    fun battleStart() = Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors)).battle()
+    println("${battleStart()}")
 
-    }
+
+
 }

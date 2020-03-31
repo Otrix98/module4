@@ -4,7 +4,7 @@ class Team (val numberOfWarriors: Int = 0) {
 
     var warriorList = mutableListOf<AbstractWarrior>()
 
-    private fun recruting() {
+     fun recruting() {
         for (i in 1..numberOfWarriors)
             if (Math.random() < 50) {
                 warriorList.add(Soldier())
@@ -17,6 +17,7 @@ class Team (val numberOfWarriors: Int = 0) {
         } else {
             warriorList.add(Sniper())
         }
+
 
     }
 }

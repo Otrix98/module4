@@ -6,7 +6,7 @@ import com.skillbox.module4.oop.Weapons.pistol
 import kotlin.random.Random
 
 abstract class AbstractWarrior (
-    private var health: Int = 1000,
+     var health: Int = 1000,
     override  var dodgeChance: Int = 50,
     val accuracy: Int = 50,
     val gun: AbstractWeapon = pistol,

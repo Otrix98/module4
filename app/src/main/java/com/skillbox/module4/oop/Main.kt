@@ -5,20 +5,18 @@ fun main() {
 
     val numberOfWarriors: Int = readLine()!!.toInt()
 
-    fun cr() {
-        Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors)).createFirstTeam()
-        Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors)).createSecondTeam()
-    }
-    println("${cr()}")
-
     println("Начало битвы")
 
-    fun battleStart() = Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors)).takeBattleState()
-    println("${battleStart()}")
-    fun battleContinue() = Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors)).battle(battleStart())
-    println("continue")
+    fun battle() = Battle(firstTeam = Team(numberOfWarriors), secondTeam = Team(numberOfWarriors))
+        battle().createFirstTeam()
+        battle().createSecondTeam()
+        battle().battle(battle())
 
-    println( "${battleContinue()}")
+
+
+
+
+
 
 
 

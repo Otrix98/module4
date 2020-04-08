@@ -8,33 +8,33 @@ class Battle (
         firstTeam.recruting()
         println("${firstTeam}")
         println("" + firstTeam.warriorList.size)
-        println("" + firstTeam.warriorList.sumBy { it.health })
+        println("" + firstTeam.warriorList.sumBy { it.currentHealth })
     }
     fun createSecondTeam()  {
         secondTeam.recruting()
         println("${secondTeam}")
         println("" + secondTeam.warriorList.size)
-        println("" + secondTeam.warriorList.sumBy { it.health })
+        println("" + secondTeam.warriorList.sumBy { it.currentHealth})
     }
 
 
     fun takeBattleState(state: Battle): BattleState {println("takeBattleState")
 
-        if (state.firstTeam.warriorList.isNotEmpty() && state.secondTeam.warriorList.isNotEmpty()) {
-            println("Progress(First team health = " + state.firstTeam.warriorList.sumBy { it.health } +
-                    ", Second team health = " + state.secondTeam.warriorList.sumBy { it.health })
-            return BattleState.Progress(firstTeamHealth = firstTeam.warriorList.sumBy { it.health },
-                secondTeamHealth = secondTeam.warriorList.sumBy { it.health })
+        if (state.firstTeam.warriorList.isNotEmpty() && state.secondTeam.warriorList.isEmpty() ) {
+            println("Победила первая команда")
+            return BattleState.FirstTeamWin
         }
 
-        else if (firstTeam.warriorList.isEmpty() && secondTeam.warriorList.isNotEmpty() ) {
+        else if (state.firstTeam.warriorList.isEmpty() && state.secondTeam.warriorList.isNotEmpty() ) {
             println("Победила вторая команда")
             return BattleState.SecondTeamWin
         }
 
-        else if (secondTeam.warriorList.isEmpty() && firstTeam.warriorList.isNotEmpty()) {
-            println("Победила первая команда")
-            return BattleState.FirstTeamWin
+        else if
+
+        (state.firstTeam.warriorList.isNotEmpty() && state.secondTeam.warriorList.isNotEmpty()) {
+            return BattleState.Progress(firstTeamHealth = firstTeam.warriorList.sumBy { it.currentHealth },
+                secondTeamHealth = secondTeam.warriorList.sumBy { it.currentHealth })
         }
 
         else {
@@ -63,21 +63,24 @@ class Battle (
 
 
     fun battle(state: Battle) {
-        takeBattleState(state)
+        var y = takeBattleState(state)
+
 
         while (firefight() == true) {
             println("battle")
+
             when (takeBattleState(state)) {
                 BattleState.FirstTeamWin -> println("Победила первая команда")
                 BattleState.SecondTeamWin -> println("Победила вторая команда")
                 BattleState.Drawn -> println("Ничья")
-                else  -> {
-                    println("Progress(First team health = ${firstTeam.warriorList.sumBy {it.health}}," +
-                            " Second team health = ${secondTeam.warriorList.sumBy { it.health }})")
+                is BattleState.Progress  -> {
+                    println("Progress(First team health = " + state.firstTeam.warriorList.sumBy { it.currentHealth } +
+                            ", Second team health = " + state.secondTeam.warriorList.sumBy { it.currentHealth })
 
                 }
             }
         }
+
 
         println("battle ended")
     }

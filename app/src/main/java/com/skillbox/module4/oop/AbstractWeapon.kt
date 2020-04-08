@@ -20,8 +20,9 @@ abstract class AbstractWeapon(
     }
 
     fun reload() {
-        Ammo.add(maxNuberBulletInStore, ammoType)
-    }
+        for (i in 1 .. maxNuberBulletInStore) {
+        Ammo.add (createAmmo())
+    }}
 
 
 

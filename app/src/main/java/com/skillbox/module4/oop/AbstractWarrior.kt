@@ -16,13 +16,14 @@ abstract class AbstractWarrior (
     var isAttack: Boolean = false
 
     override fun takeDamage(damage: Int) {
-        health = health - damage
+        currentHealth = currentHealth - damage
     }
 
 
     override fun attack(enemy: Warrior) {
 
         if (gun.ammoAveliable()) {
+            gun.createAmmo()
             gun.reload()
         }
         val shots = gun.getAmmo()
@@ -40,7 +41,7 @@ abstract class AbstractWarrior (
 
 
     override var isKilled: Boolean
-        get() = health <= 0
+        get() = currentHealth <= 0
         set(value) {}
 
     override val isReady: Boolean

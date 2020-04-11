@@ -21,6 +21,7 @@ abstract class AbstractWarrior (
 
 
     override fun attack(enemy: Warrior) {
+        println("attack")
 
         if (gun.ammoAveliable()) {
             gun.createAmmo()
@@ -33,6 +34,7 @@ abstract class AbstractWarrior (
                 damage += gun.createAmmo().calcDamage()
             }
         }
+
         enemy.takeDamage(damage)
 
 

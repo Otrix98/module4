@@ -20,25 +20,28 @@ class Battle (
 
 
     fun takeBattleState(battle: Battle): BattleState {
-        println("takeBattleState")
 
-        if (battle.firstTeam.warriorList.isNotEmpty() && battle.secondTeam.warriorList.isEmpty() ) {
-            println("Победила первая команда")
+        if ( battle.secondTeam.warriorList.all { it.isKilled } || (battle.firstTeam.warriorList.all { !it.isReady }
+                    && battle.secondTeam.warriorList.all { !it.isReady }) &&
+            (battle.firstTeam.warriorList.sumBy { it.currentHealth } > battle.secondTeam.warriorList.sumBy { it.currentHealth}) ) {
             state = BattleState.FirstTeamWin
         }
 
-        else if (battle.firstTeam.warriorList.isEmpty() && battle.secondTeam.warriorList.isNotEmpty() ) {
-            println("Победила вторая команда")
+        else if (battle.firstTeam.warriorList.all { it.isKilled } || (battle.secondTeam.warriorList.all { !it.isReady }
+                    && battle.firstTeam.warriorList.all { !it.isReady }) &&
+            (battle.secondTeam.warriorList.sumBy { it.currentHealth } > battle.firstTeam.warriorList.sumBy { it.currentHealth}) ) {
             state = BattleState.SecondTeamWin
         }
 
-        else if
-                     (battle.firstTeam.warriorList.isNotEmpty() && battle.secondTeam.warriorList.isNotEmpty()) {
-            state = BattleState.Progress
+        else if (battle.firstTeam.warriorList.all { it.isKilled } && battle.secondTeam.warriorList.all { it.isKilled } ||
+            (battle.firstTeam.warriorList.all { !it.isReady }
+                    && battle.secondTeam.warriorList.all { !it.isReady }) &&
+            (battle.firstTeam.warriorList.sumBy { it.currentHealth } == battle.secondTeam.warriorList.sumBy { it.currentHealth})) {
+            state = BattleState.Drawn
         }
         else {
-            println("Ничья")
-            return BattleState.Drawn
+
+            return BattleState.Progress
         }
         return state
     }
@@ -52,11 +55,9 @@ class Battle (
 
         if (attackedWarrior1 == null || attackedWarrior2 == null
             || (shotingWarrior1 == null && shotingWarrior2 == null)) {
-            println("false")
             return false}
 
         else {
-            println("else")
             shotingWarrior1?.attack(attackedWarrior2)
             shotingWarrior2?.attack(attackedWarrior1)
             return true
@@ -68,7 +69,6 @@ class Battle (
     fun battle(battle: Battle) {
 
         while (firefight() == true) {
-            println("battle")
 
             when (takeBattleState(battle)) {
                 is BattleState.FirstTeamWin -> println("Победила первая команда")

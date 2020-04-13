@@ -21,7 +21,6 @@ abstract class AbstractWarrior (
 
 
     override fun attack(enemy: Warrior) {
-        println("attack")
 
         if (gun.ammoAveliable()) {
             gun.createAmmo()

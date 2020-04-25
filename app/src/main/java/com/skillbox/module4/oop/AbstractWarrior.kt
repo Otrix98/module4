@@ -22,10 +22,10 @@ abstract class AbstractWarrior (
 
     override fun attack(enemy: Warrior) {
 
-        if (gun.ammoAveliable()) {
+
             gun.createAmmo()
-            gun.reload()
-        }
+//            gun.reload()
+
         val shots = gun.getAmmo()
         var damage = 0
         for (i in 1..shots) {

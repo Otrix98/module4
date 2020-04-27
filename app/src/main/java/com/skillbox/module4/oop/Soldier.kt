@@ -1,10 +1,10 @@
 package com.skillbox.module4.oop
 
-class Soldier:  AbstractWarrior ( 800,
+class Soldier : AbstractWarrior(800,
     30,
     60,
     Weapons.rifle
-){
+) {
 
     override fun takeDamage(damage: Int) {
         currentHealth -= damage
@@ -14,12 +14,9 @@ class Soldier:  AbstractWarrior ( 800,
     }
 
     override var isKilled: Boolean = false
-        get() {return currentHealth <= 0}
-
-
+        get() { return currentHealth <= 0 }
 
     override fun toString(): String {
         return "Officer"
     }
-
 }

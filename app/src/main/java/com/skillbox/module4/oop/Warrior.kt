@@ -6,5 +6,5 @@ interface Warrior {
     val isReady: Boolean
 
     fun attack(enemy: Warrior)
-    fun takeDamage (damage: Int)
+    fun takeDamage(damage: Int)
 }

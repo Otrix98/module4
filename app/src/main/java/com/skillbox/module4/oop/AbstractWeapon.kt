@@ -1,9 +1,5 @@
 package com.skillbox.module4.oop
 
-import com.skillbox.module4.oop.Ammo.*
-import java.lang.Exception
-
-
 abstract class AbstractWeapon(
     var maxNuberBulletInStore: Int,
     val FireType: FireType,
@@ -13,7 +9,6 @@ abstract class AbstractWeapon(
     abstract fun createAmmo(): Ammo
 
     var Ammo = mutableListOf<Ammo>()
-
 
     /* fun ammoAveliable(): Boolean {
         if (Ammo.isEmpty()) return (true)
@@ -26,14 +21,13 @@ abstract class AbstractWeapon(
         }
     }
 
-    class NoAmmoException : Exception() {}
+    class NoAmmoException : Exception()
 
     fun getAmmo(): Int {
         try {
             noAmmoException()
         } catch (t: NoAmmoException) {
             reload()
-
         } finally {
 
             for (i in 1..FireType.spendedBullets) {
@@ -45,10 +39,6 @@ abstract class AbstractWeapon(
 
     fun noAmmoException() {
         if (Ammo.isEmpty())
-        throw NoAmmoException ()
+        throw NoAmmoException()
     }
-
-
-
-
 }

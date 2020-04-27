@@ -1,17 +1,14 @@
 package com.skillbox.module4.oop
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.skillbox.module4.oop.Weapons.pistol
-import kotlin.random.Random
 
-abstract class AbstractWarrior (
-     var health: Int = 1000,
-    override  var dodgeChance: Int = 50,
+abstract class AbstractWarrior(
+    var health: Int = 1000,
+    override var dodgeChance: Int = 50,
     val accuracy: Int = 50,
     val gun: AbstractWeapon = pistol,
-    var currentHealth: Int = health): Warrior {
-
+    var currentHealth: Int = health
+) : Warrior {
 
     var isAttack: Boolean = false
 
@@ -19,11 +16,9 @@ abstract class AbstractWarrior (
         currentHealth = currentHealth - damage
     }
 
-
     override fun attack(enemy: Warrior) {
 
-
-            gun.createAmmo()
+        gun.createAmmo()
 //            gun.reload()
 
         val shots = gun.getAmmo()
@@ -36,10 +31,8 @@ abstract class AbstractWarrior (
 
         enemy.takeDamage(damage)
 
-
         isAttack = true
     }
-
 
     override var isKilled: Boolean
         get() = currentHealth <= 0
@@ -47,13 +40,4 @@ abstract class AbstractWarrior (
 
     override val isReady: Boolean
         get() = !isKilled && !isAttack
-
 }
-
-
-
-
-
-
-
-

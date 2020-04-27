@@ -23,7 +23,7 @@ object Weapons {
             }
         }
 
-         val sniperRifle = object : AbstractWeapon(10, FireType.Single, Ammo.TYPE_A) {
+    val sniperRifle = object : AbstractWeapon(10, FireType.Single, Ammo.TYPE_A) {
         override fun createAmmo(): Ammo {
             com.skillbox.module4.oop.Ammo.TYPE_A.calcDamage()
             return com.skillbox.module4.oop.Ammo.TYPE_A

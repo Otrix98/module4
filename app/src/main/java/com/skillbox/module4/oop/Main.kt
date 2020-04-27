@@ -15,14 +15,4 @@ fun main() {
     battle.createFirstTeam()
     battle.createSecondTeam()
     battle.battle(battle)
-
-
-
-
-
-
-
-
-
-
 }
